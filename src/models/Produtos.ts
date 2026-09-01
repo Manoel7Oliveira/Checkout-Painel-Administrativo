@@ -4,4 +4,4 @@ export interface Produtos {
     descricao?: string | null;
     created_at: Date;
     update_at: Date;
-}
+}  
