@@ -17,6 +17,8 @@ class ValoresAtributosRepository {
             }
         });
     }
+
+
 }
 
 export default ValoresAtributosRepository
