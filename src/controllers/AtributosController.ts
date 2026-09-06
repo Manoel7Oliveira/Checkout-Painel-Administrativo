@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { Adicionar, AdicionarValor, EditarAtributo } from "./schemas/AtributosSchema";
+import { Adicionar, AdicionarValor, EditarAtributo, EditarValorAtributo } from "./schemas/AtributosSchema";
 
 import { AtributosServiceFactory } from "../factories/AtributosFactory";
 
@@ -63,6 +63,18 @@ class AtributosController {
 
     async editarValorAtributo(req: Request, res: Response) {
         try {
+
+            await EditarValorAtributo.validate(req.body);
+
+            const id = req.params.id
+
+            if (!id || Array.isArray(id)) {
+                throw new Error("Por favor, selecione um valor de atributo para editar!");
+            }
+
+            const valorAtributoEditado = await AtributosServiceFactory.editarValorAtributo(req.body, id);
+            
+            res.json(valorAtributoEditado);
 
         } catch (err: any) {
             res.status(400).json({ error: err.message });
