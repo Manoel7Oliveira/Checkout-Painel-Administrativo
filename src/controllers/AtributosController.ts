@@ -73,11 +73,23 @@ class AtributosController {
             }
 
             const valorAtributoEditado = await AtributosServiceFactory.editarValorAtributo(req.body, id);
-            
+
             res.json(valorAtributoEditado);
 
         } catch (err: any) {
             res.status(400).json({ error: err.message });
+        }
+    }
+
+    async buscarTodosAtributos(req: Request, res: Response) {
+
+        try {
+
+            const retorno = await AtributosServiceFactory.buscarTodos();
+            res.json(retorno);
+
+        } catch (err: any) {
+            res.status(400).json({ error: err.mesage });
         }
     }
 

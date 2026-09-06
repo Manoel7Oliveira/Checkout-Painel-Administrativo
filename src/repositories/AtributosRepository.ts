@@ -20,6 +20,15 @@ class AtributosRepository {
             data: dados
         });
     }
+
+    async buscarTodos() {
+        return await PrismaFactory.atributos.findMany({
+            include: {
+                valores_atributos: true
+            }
+
+        });
+    }
 }
 
 export default AtributosRepository
