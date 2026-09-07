@@ -10,14 +10,13 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  
 }
 
 model Atributos {
-  id String @id @default(uuid())
-  nome String
+  id    String   @id @default(uuid())
+  nome  String
   ativo Boolean?
-  
+
   valores_atributos ValoresAtributos[]
 
   created_at DateTime @default(now())
@@ -25,15 +24,23 @@ model Atributos {
 }
 
 model ValoresAtributos {
-  id String @id @default(uuid())
+  id          String   @id @default(uuid())
   id_atributo String
-  valor String
-  ativo Boolean?
-  
+  valor       String
+  ativo       Boolean?
+
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
 
   atributo Atributos @relation(fields: [id_atributo], references: [id])
 
   @@map("valores_atributos")
-} 
+}
+
+model Categorias {
+  id         String   @id @default(uuid())
+  nome       String
+  ativo      Boolean
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+}
