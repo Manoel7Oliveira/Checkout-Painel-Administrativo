@@ -3,8 +3,10 @@ export interface Variantes {
     id_produto: string;
     sku: string;
     preco: number;
-    peso: number;
-    volume: number;
+    comprimento: number;
+    largura: number;
+    altura: number;
+    ativo: boolean;
     json_caracteristicas: any;
     created_at: Date;
     updated_at: Date;
