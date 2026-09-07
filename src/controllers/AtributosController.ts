@@ -93,6 +93,37 @@ class AtributosController {
         }
     }
 
+    async excluirAtributo(req: Request, res: Response) {
+        try {
+            const id = req.params.id;
+
+            if (!id || Array.isArray(id)) {
+                throw new Error("Por favor, selecione um atributo para excluir!");
+            }
+
+            const retorno = await AtributosServiceFactory.excluir(id);
+            res.status(200).json(retorno);
+
+        } catch (err: any) {
+            res.status(400).json({ error: err.message })
+        }
+    }
+
+    async excluirValorAtributo(req: Request, res: Response) {
+        try {
+            const id = req.params.id;
+            
+            if (!id || Array.isArray(id)) {
+                throw new Error("Por favor, selecione um valor do atributo para excluir!");
+            }
+
+            const retorno = await AtributosServiceFactory.excluirValor(id);
+            res.status(200).json(retorno);
+
+        } catch (err: any) {
+            res.status(400).json({ error: err.message });
+        }
+    }
 }
 
 export default AtributosController;

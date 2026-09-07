@@ -7,7 +7,7 @@ class ValoresAtributosRepository {
     async adicionar(dados: ValoresAtributos[]) {
         return await PrismaFactory.valoresAtributos.createMany({
             data: dados
-        });
+        })
     }
 
     async buscarValoresPorIdAtributo(id_atributo: string) {
@@ -15,19 +15,29 @@ class ValoresAtributosRepository {
             where: {
                 id_atributo
             }
-        });
+        })
     }
 
     async editar(dados: any, id: string) {
-      return await PrismaFactory.valoresAtributos.update({
+        return await PrismaFactory.valoresAtributos.update({
             where: {
                 id
             },
             data: dados
-        })
+        });
     }
 
-
+    async excluir(id: string) {
+      return await PrismaFactory.valoresAtributos.update({
+        where: {
+            id
+        },
+        data:{
+            ativo: false
+        }
+      })
+        
+    }
 }
 
-export default ValoresAtributosRepository
+export default ValoresAtributosRepository;

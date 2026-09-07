@@ -6,7 +6,7 @@ class AtributosRepository {
     async adicionar(dados: Atributos) {
         return await PrismaFactory.atributos.create({
             data: dados
-        });
+        })
 
     }
 
@@ -16,7 +16,7 @@ class AtributosRepository {
                 id: id_atributo,
             },
             data: dados
-        });
+        })
     }
 
     async buscarTodos() {
@@ -25,10 +25,25 @@ class AtributosRepository {
                 ativo: true
             },
             include: {
-                valores_atributos: true
+                valores_atributos: {
+                    where: {
+                        ativo: true
+                    }
+                }
             }
 
         });
+    }
+
+    async excluir(id: string) {
+        return await PrismaFactory.atributos.update({
+            where: {
+                id
+            },
+            data: {
+                ativo: false
+            }
+        })
     }
 }
 

@@ -57,6 +57,14 @@ class AtributosService {
     async buscarTodos() {
         return await this._atributosRepository.buscarTodos();
     }
+
+    async excluir(id: string) {
+        return await this._atributosRepository.excluir(id);
+    }
+
+    async excluirValor(id: string) {
+        return await this._valoresAtributosRepository.excluir(id);
+    }
 }
 
 export default AtributosService;
