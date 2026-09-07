@@ -8,4 +8,10 @@ export const AdicionarProduto = object().shape({
 
 });
 
+export const EditarProduto = object().shape({
+    nome: string().required(),
+    descricao: string().nullable()
+})
+
 export type IAdicionarProduto = InferType<typeof AdicionarProduto>;
+export type IEditarProduto = InferType<typeof EditarProduto>;

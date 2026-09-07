@@ -1,8 +1,7 @@
 import { Request, Response } from "express";
 
-import { AdicionarProduto } from "./schemas/ProdutosSchema";
+import { AdicionarProduto, EditarProduto } from "./schemas/ProdutosSchema";
 import { ProdutosServiceFactory } from "../factories/ProdutosFactory";
-
 class ProdutosController {
 
     async adicionar(req: Request, res: Response) {
@@ -17,7 +16,23 @@ class ProdutosController {
         }
     }
 
-    
+    async editarProduto(req: Request, res: Response) {
+        try {
+
+            await EditarProduto.validate(req.body);
+            const id = req.params.id
+
+            if (!id || Array.isArray(id)) {
+                throw new Error("Por favor, selecione o produto para editar!");
+            }
+
+            const retorno = await ProdutosServiceFactory.editarProduto(req.body, id);
+            res.json(retorno);
+
+        } catch (err: any) {
+            res.status(400).json({ error: err.message });
+        }
+    }
 }
 
 export default ProdutosController;

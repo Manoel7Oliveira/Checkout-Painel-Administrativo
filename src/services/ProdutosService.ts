@@ -1,4 +1,4 @@
-import { IAdicionarProduto } from "../controllers/schemas/ProdutosSchema";
+import { IAdicionarProduto, IEditarProduto } from "../controllers/schemas/ProdutosSchema";
 import ProdutosRepository from "../repositories/ProdutosRepository";
 
 class ProdutosService {
@@ -24,7 +24,13 @@ class ProdutosService {
         return produtoAdicionado;
     }
 
-    
+    async editarProduto(dados: IEditarProduto, id: string) {
+        const payloadEditarProduto = {
+            nome: dados.nome,
+            ...(dados.descricao !== undefined && { descricao: dados.descricao })
+        }
+        return await this._produtosRepository.editar(payloadEditarProduto, id);
+    }
 }
 
 export default ProdutosService;

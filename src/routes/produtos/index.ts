@@ -8,5 +8,7 @@ const produtosController = new ProdutosController();
 
 routes.post("/produtos", produtosController.adicionar);
 
+routes.patch("/produtos/:id", produtosController.editarProduto);
+
 
 export default routes;
