@@ -31,6 +31,10 @@ class ProdutosService {
         }
         return await this._produtosRepository.editar(payloadEditarProduto, id);
     }
+
+    async excluirProduto(id: string) {
+        return await this._produtosRepository.excluir(id);
+    }
 }
 
 export default ProdutosService;

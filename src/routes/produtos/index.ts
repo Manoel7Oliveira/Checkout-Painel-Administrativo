@@ -10,5 +10,7 @@ routes.post("/produtos", produtosController.adicionar);
 
 routes.patch("/produtos/:id", produtosController.editarProduto);
 
+routes.delete("/produtos/:id", produtosController.excluirProduto);
+
 
 export default routes;

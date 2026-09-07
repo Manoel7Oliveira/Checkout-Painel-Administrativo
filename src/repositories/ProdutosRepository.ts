@@ -19,6 +19,17 @@ class ProdutosRepository {
         });
 
     }
+
+    async excluir(id: string) {
+        return await PrismaFactory.produtos.update({
+            where: {
+                id
+            },
+            data: {
+                ativo: false
+            }
+        });
+    }
 }
 
 export default ProdutosRepository;
