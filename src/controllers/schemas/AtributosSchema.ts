@@ -1,7 +1,8 @@
-import { string, object, array, InferType } from "yup";
+import { string, object, array, InferType, boolean } from "yup";
 
 export const Adicionar = object().shape({
     nome: string().required("O nome é obrigatório!"),
+    ativo: boolean().nullable(),
     valores: array(object().shape({
         valor: string().required("Defina um nome para o atributo.")
     }).nullable())

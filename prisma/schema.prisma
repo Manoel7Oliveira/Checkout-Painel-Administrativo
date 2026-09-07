@@ -16,19 +16,20 @@ datasource db {
 model Atributos {
   id String @id @default(uuid())
   nome String
+  ativo Boolean?
   
   valores_atributos ValoresAtributos[]
 
-  create_at DateTime @default(now())
-  update_at DateTime @updatedAt
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
 }
 
 model ValoresAtributos {
   id String @id @default(uuid())
   id_atributo String
   valor String
-  create_at DateTime @default(now())
-  update_at DateTime @updatedAt
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
 
   atributo Atributos @relation(fields: [id_atributo], references: [id])
 

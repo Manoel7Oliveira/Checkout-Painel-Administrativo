@@ -3,5 +3,5 @@ export interface ValoresAtributos {
     id_atributo: string;
     valor: string;
     created_at?: any;
-    update_at?: any;
+    updated_at?: any;
 }

@@ -3,5 +3,5 @@ export interface Produtos {
     nome: string;
     descricao?: string | null;
     created_at: Date;
-    update_at: Date;
+    updated_at: Date;
 }  

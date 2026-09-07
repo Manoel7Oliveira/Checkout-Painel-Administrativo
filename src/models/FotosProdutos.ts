@@ -4,5 +4,5 @@ export interface FotosProdutos {
     url: string;
     principal: boolean;
     created_at: Date;
-    update_at: Date
+    updated_at: Date
 }

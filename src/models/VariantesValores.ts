@@ -3,5 +3,5 @@ export interface VariantesValores {
     id_variante: string;
     id_valor_atributo: string
     created_at: Date;
-    update_at: Date
+    updated_at: Date
 }

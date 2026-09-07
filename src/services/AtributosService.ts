@@ -10,7 +10,11 @@ class AtributosService {
     ) { }
 
     async adicionar(dados: IAdicionarAtributo) {
-        const atributoAdicionado = await this._atributosRepository.adicionar(dados.nome);
+        const payloadAdicionarAtributo = {
+            nome: dados.nome,
+            ...(dados.ativo !== undefined && { ativo: dados.ativo })
+        }
+        const atributoAdicionado = await this._atributosRepository.adicionar(payloadAdicionarAtributo);
 
         const retorno = {
             atributo: atributoAdicionado,

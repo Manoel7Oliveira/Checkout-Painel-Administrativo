@@ -7,5 +7,5 @@ export interface Variantes {
     volume: number;
     json_caracteristicas: any;
     created_at: Date;
-    update_at: Date;
+    updated_at: Date;
 }
