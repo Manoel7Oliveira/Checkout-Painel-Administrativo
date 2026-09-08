@@ -6,6 +6,8 @@ const routes = Router();
 
 const produtosController = new ProdutosController();
 
+routes.get("/produtos", produtosController.buscarTodosProdutos);
+
 routes.post("/produtos", produtosController.adicionar);
 
 routes.patch("/produtos/:id", produtosController.editarProduto);

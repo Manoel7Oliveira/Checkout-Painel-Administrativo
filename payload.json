@@ -1,0 +1,95 @@
+{
+"nome": "Camiseta básica tecnológica",
+"descricao": "Camiseta muito Tecnológica",
+"id_categoria": "7d43f10c-7590-4be2-bd36-1fd25a8ba43c",
+"ativo": true,
+"variacoes": [
+{
+"sku": "PROD-BR-M-001",
+"valores_atributos": [
+"f6a5c5f5-a249-48ae-afe8-011d7f5c7abc",
+"4f4e7ca0-e0c9-4ab3-9939-178e22156c1a"
+],
+"preco": 100,
+"peso": 0.8,
+"volume": 0.8,
+"estoque": 1000,
+"principal": true,
+"combo": false,
+"componentes": [],
+"imagens": []
+},
+{
+"sku":"PROD-BR-G-002",
+"valores_atributos": [
+"f6a5c5f5-a249-48ae-afe8-011d7f5c7abc",
+"4f4e7ca0-e0c9-4ab3-9939-178e22156c1a"
+],
+"preco": 1000,
+"peso": 0.8,
+"volume": 0.8,
+"estoque": 1000,
+"principal": true,
+"combo": false,
+"componentes": [],
+"imagens": []
+},
+{
+"sku":"PROD-VE-M-003",
+"valores_atributos": [
+"f6a5c5f5-a249-48ae-afe8-011d7f5c7abc",
+"4f4e7ca0-e0c9-4ab3-9939-178e22156c1a"
+],
+"preco": 500,
+"peso": 0.8,
+"volume": 0.8,
+"estoque": 1000,
+"principal": true,
+"combo": false,
+"componentes": [],
+"imagens": []
+},
+{
+"sku":"PROD-VE-G-004",
+"valores_atributos": [
+"f6a5c5f5-a249-48ae-afe8-011d7f5c7abc",
+"4f4e7ca0-e0c9-4ab3-9939-178e22156c1a"
+],
+"preco": 200,
+"peso": 0.8,
+"volume": 0.8,
+"estoque": 1000,
+"principal": true,
+"combo": false,
+"componentes": [],
+"imagens": []
+},
+{
+"sku":"COMBO_001",
+"valores_atributos": [
+"f6a5c5f5-a249-48ae-afe8-011d7f5c7abc",
+"4f4e7ca0-e0c9-4ab3-9939-178e22156c1a"
+],
+"preco": 0,
+"peso": 0,
+"volume": 0,
+"estoque": 0,
+"principal": false,
+"combo": true,
+"componentes": [
+{
+"variacao_id": 100,
+"quantidade": 2
+}
+],
+"imagens": []
+}
+],
+"caracteristicas_json": {
+"material": "modal"
+},
+"tags": ["básica", "conforto", "verão"],
+"meta_title": "CAMISA BÁSICA",
+"meta_description": "Camiseta básica para uso",
+"data_criacao": "2025-01-25T15:21:49.860Z"
+}

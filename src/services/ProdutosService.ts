@@ -7,6 +7,10 @@ class ProdutosService {
         private readonly _produtosRepository: ProdutosRepository
     ) { }
 
+    async buscarTodosProdutos() {
+        return await this._produtosRepository.buscarTodos();
+    }
+
     async adicionar(dados: IAdicionarProduto) {
 
         const payloadAdicionarProduto = {
@@ -35,6 +39,7 @@ class ProdutosService {
     async excluirProduto(id: string) {
         return await this._produtosRepository.excluir(id);
     }
+
 }
 
 export default ProdutosService;

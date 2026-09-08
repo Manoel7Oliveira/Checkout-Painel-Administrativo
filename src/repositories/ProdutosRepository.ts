@@ -1,8 +1,15 @@
-import { IEditarProduto } from "../controllers/schemas/ProdutosSchema";
 import { PrismaFactory } from "../factories/PrismaFactory";
 import { Produtos } from "../models/Produtos";
 
 class ProdutosRepository {
+
+    async buscarTodos() {
+        return await PrismaFactory.produtos.findMany({
+            where: {
+                ativo: true
+            }
+        });
+    }
 
     async adicionar(dados: Produtos): Promise<Produtos> {
         return await PrismaFactory.produtos.create({

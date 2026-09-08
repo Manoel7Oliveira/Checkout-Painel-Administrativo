@@ -5,6 +5,17 @@ import { ProdutosServiceFactory } from "../factories/ProdutosFactory";
 import { ValidarUUIDSchema } from "./schemas/GlobalSchema";
 class ProdutosController {
 
+    async buscarTodosProdutos(req: Request, res: Response) {
+        try {
+
+            const retorno = await ProdutosServiceFactory.buscarTodosProdutos();
+            res.json(retorno);
+
+        } catch (err: any) {
+            res.status(400).json({ error: err.message });
+        }
+    }
+
     async adicionar(req: Request, res: Response) {
         try {
             await AdicionarProduto.validate(req.body);
@@ -56,6 +67,7 @@ class ProdutosController {
             res.status(400).json({ error: err.message });
         }
     }
+
 }
 
 export default ProdutosController;
