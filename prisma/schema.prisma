@@ -38,9 +38,9 @@ model ValoresAtributos {
 }
 
 model Categorias {
-  id         String   @id @default(uuid())
-  nome       String
-  ativo      Boolean
+  id    String  @id @default(uuid())
+  nome  String
+  ativo Boolean
 
   produtos Produtos[]
 
@@ -55,10 +55,34 @@ model Produtos {
   descricao    String?
   ativo        Boolean
 
-  categoria Categorias @relation(fields: [id_categoria], references: [id])
+  categoria Categorias  @relation(fields: [id_categoria], references: [id])
+  variantes Variantes[]
 
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
 
   @@map("produtos")
+}
+
+model Variantes {
+  id                   String  @id @default(uuid())
+  id_produto           String
+  sku                  String
+  preco                Float
+  comprimento          Float
+  estoque              Float
+  peso                 Float
+  combo                Boolean
+  altura               Float
+  largura              Float
+  ativo                Boolean
+  json_caracteristicas Json
+  principal            Boolean
+
+  produto Produtos @relation(fields: [id_produto], references: [id])
+
+  created_at  DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  @@map("variantes")
 }
