@@ -57,6 +57,32 @@ class ProdutosService {
         return [];
     }
 
+    organizarPayloadAdicionarValorVariantes(variantesProdutos: Variantes[], dados: IAdicionarVariante) {
+        const retorno = variantesProdutos.map((variante, index) => {
+            const varianteCorrespondenteFront = dados?.find(item => item.sku === variante.sku);
+
+            if (varianteCorrespondenteFront && varianteCorrespondenteFront.valores_atributos) {
+
+                const payload = []
+
+                for (let varianteFront of varianteCorrespondenteFront.valores_atributos) {
+                    payload.push({
+                        id_valor_atributo: varianteFront as string,
+                        id_variante: variante.id as string,
+                        ativo: true 
+                    });
+                }
+
+
+                return payload;
+            }
+
+            return [];
+        });
+
+        return retorno.flat();
+    }
+
     async adicionar(dados: IAdicionarProduto) {
 
         const payloadAdicionarProduto = { // Aqui deveria ser tipado com IAdicionarProduto, Rever isso depois! 
@@ -75,9 +101,16 @@ class ProdutosService {
                 dados.variantes
             );
             await this._variantesService.adicionar(payloadAdicionarVariantes);
+
+            const variantesProduto = await this._variantesService.buscarTodas(produtoAdicionado.id as string);
+            const payloadAdicionarVariantesValores = this.organizarPayloadAdicionarValorVariantes(variantesProduto, dados.variantes);
+
+            const variantesValoresAdicionados = await this._variantesService.adicionarVariantesValores(payloadAdicionarVariantesValores);
+            console.log(variantesValoresAdicionados)
+
+
         }
 
-        //console.log(dados.variantes);
 
         return { status: "success" };
     }

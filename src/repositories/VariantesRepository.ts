@@ -8,6 +8,14 @@ class VariantesRepository {
             data: dados
         });
     }
+
+    async buscarTodas(id_produto: string) {
+        return await PrismaFactory.variantes.findMany({
+            where: {
+                id_produto
+            }
+        });
+    }
 }
 
 export default VariantesRepository;

@@ -79,10 +79,24 @@ model Variantes {
   json_caracteristicas Json
   principal            Boolean
 
-  produto Produtos @relation(fields: [id_produto], references: [id])
+  produto           Produtos           @relation(fields: [id_produto], references: [id])
+  variantes_valores VariantesValores[]
 
-  created_at  DateTime @default(now())
+  created_at DateTime @default(now())
   updated_at DateTime @updatedAt
 
   @@map("variantes")
+}
+
+model VariantesValores {
+  id                String   @id @default(uuid())
+  id_variante       String
+  id_valor_atributo String
+  ativo             Boolean
+  created_at        DateTime @default(now())
+  updated_at        DateTime @updatedAt
+
+  variante Variantes @relation(fields: [id_variante], references: [id])
+
+  @@map("variantes_valores")
 }
