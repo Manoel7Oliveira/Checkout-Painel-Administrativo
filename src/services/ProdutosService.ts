@@ -1,4 +1,4 @@
-import { IAdicionarProduto, IAdicionarVariante, IEditarProduto } from "../controllers/schemas/ProdutosSchema";
+import { IAdicionarProduto, IAdicionarVariante, IEditarProduto, IEditarVariante } from "../controllers/schemas/ProdutosSchema";
 import { Variantes } from "../models/Variantes";
 import ProdutosRepository from "../repositories/ProdutosRepository";
 import VariantesService from "./VariantesService";
@@ -69,7 +69,7 @@ class ProdutosService {
                     payload.push({
                         id_valor_atributo: varianteFront as string,
                         id_variante: variante.id as string,
-                        ativo: true 
+                        ativo: true
                     });
                 }
 
@@ -123,8 +123,16 @@ class ProdutosService {
         return await this._produtosRepository.editar(payloadEditarProduto, id);
     }
 
+    async editarVariante(dados: IEditarVariante, id: string) {
+        return await this._variantesService.editarVariante(dados, id);
+    }
+
     async excluirProduto(id: string) {
         return await this._produtosRepository.excluir(id);
+    }
+
+    async excluirVariante(id: string) {
+        return await this._variantesService.desativar(id);
     }
 
 }

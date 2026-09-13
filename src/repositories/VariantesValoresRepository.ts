@@ -8,6 +8,17 @@ class VariantesValoresRepository {
             data: dados
         });
     }
+
+    async desativar(id: string) {
+        return await PrismaFactory.variantesValores.update({
+            where: {
+                id
+            },
+            data: {
+                ativo: false
+            }
+        })
+    }
 }
 
 export default VariantesValoresRepository;

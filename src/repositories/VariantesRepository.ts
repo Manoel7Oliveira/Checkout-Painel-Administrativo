@@ -1,3 +1,4 @@
+import { IEditarVariante } from "../controllers/schemas/ProdutosSchema";
 import { PrismaFactory } from "../factories/PrismaFactory";
 import { Variantes } from "../models/Variantes";
 
@@ -13,6 +14,26 @@ class VariantesRepository {
         return await PrismaFactory.variantes.findMany({
             where: {
                 id_produto
+            }
+        });
+    }
+
+    async editar(dados: IEditarVariante, id: string) {
+        return await PrismaFactory.variantes.update({
+            where: {
+                id
+            },
+            data: dados
+        });
+    }
+
+    async desativar(id: string) {
+        return await PrismaFactory.variantes.update({
+            where: {
+                id
+            },
+            data: {
+                ativo: false
             }
         });
     }

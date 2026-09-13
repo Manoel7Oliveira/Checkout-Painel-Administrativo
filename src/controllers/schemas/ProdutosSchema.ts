@@ -25,6 +25,15 @@ export const AdicionarVariante = array().of(
     })
 ).nullable()
 
+export const EditarVariante = object().shape({
+    preco: number().required(),
+    peso: number().required(),
+    comprimento: number().required(),
+    largura: number().required(),
+    altura: number().required(),
+    estoque: number().required(),
+})
+
 export const AdicionarProduto = object().shape({
     id_categoria: string().required(),
     nome: string().required(),
@@ -42,3 +51,4 @@ export const EditarProduto = object().shape({
 export type IAdicionarProduto = InferType<typeof AdicionarProduto>;
 export type IAdicionarVariante = InferType<typeof AdicionarVariante>
 export type IEditarProduto = InferType<typeof EditarProduto>;
+export type IEditarVariante = InferType<typeof EditarVariante>;
