@@ -7,6 +7,20 @@ class ProdutosRepository {
         return await PrismaFactory.produtos.findMany({
             where: {
                 ativo: true
+            },
+            include: {
+                variantes: {
+                    where: {
+                        ativo: true
+                    },
+                    include: {
+                        variantes_valores: {
+                            where: {
+                                ativo: true
+                            }
+                        }
+                    }
+                }
             }
         });
     }
