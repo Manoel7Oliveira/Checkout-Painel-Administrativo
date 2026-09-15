@@ -1,5 +1,6 @@
 import { IAdicionarProduto, IAdicionarVariante, IEditarProduto, IEditarVariante } from "../controllers/schemas/ProdutosSchema";
 import { Variantes } from "../models/Variantes";
+import CategoriasRepository from "../repositories/CategoriasRepository";
 import ProdutosRepository from "../repositories/ProdutosRepository";
 import VariantesService from "./VariantesService";
 
@@ -7,7 +8,7 @@ class ProdutosService {
 
     constructor(
         private readonly _produtosRepository: ProdutosRepository,
-        private readonly _variantesService: VariantesService
+        private readonly _variantesService: VariantesService,
     ) { }
 
     async buscarTodosProdutos() {
