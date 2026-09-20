@@ -86,7 +86,7 @@ class ProdutosService {
 
     async adicionar(dados: IAdicionarProduto) {
 
-        const payloadAdicionarProduto = { // Aqui deveria ser tipado com IAdicionarProduto, Rever isso depois! 
+        const payloadAdicionarProduto = {
             id_categoria: dados.id_categoria,
             nome: dados.nome,
             ativo: dados.ativo,
@@ -106,12 +106,8 @@ class ProdutosService {
             const variantesProduto = await this._variantesService.buscarTodas(produtoAdicionado.id as string);
             const payloadAdicionarVariantesValores = this.organizarPayloadAdicionarValorVariantes(variantesProduto, dados.variantes);
 
-            const variantesValoresAdicionados = await this._variantesService.adicionarVariantesValores(payloadAdicionarVariantesValores);
-            console.log(variantesValoresAdicionados)
-
-
+            await this._variantesService.adicionarVariantesValores(payloadAdicionarVariantesValores);
         }
-
 
         return { status: "success" };
     }

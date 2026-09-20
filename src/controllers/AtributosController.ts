@@ -32,9 +32,6 @@ class AtributosController {
 
             res.status(201).json(atributos);
 
-            console.log(req.body, req.params.id);
-
-
         } catch (err: any) {
             res.status(400).json({ error: err.message });
         }
@@ -112,7 +109,7 @@ class AtributosController {
     async excluirValorAtributo(req: Request, res: Response) {
         try {
             const id = req.params.id;
-            
+
             if (!id || Array.isArray(id)) {
                 throw new Error("Por favor, selecione um valor do atributo para excluir!");
             }
